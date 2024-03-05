@@ -11,6 +11,7 @@ dash-html-components==2.0.0
 dash-table==5.0.0
 et-xmlfile==1.1.0
 Flask==3.0.2
+gunicorn==21.2.0
 idna==3.6
 importlib-metadata==7.0.1
 itsdangerous==2.1.2
@@ -33,4 +34,3 @@ tzdata==2024.1
 urllib3==2.2.1
 Werkzeug==3.0.1
 zipp==3.17.0
-gunicorn==19.7.1

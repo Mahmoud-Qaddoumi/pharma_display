@@ -3,9 +3,9 @@ import dash_bootstrap_components as dbc
 import dash_auth
 import pandas as pd
 
-VALID_USERNAME_PASSWORD_PAIRS = {'admin': 'bdair_123'}
+# VALID_USERNAME_PASSWORD_PAIRS = {'admin': 'bdair_123'}
 app = Dash(__name__, external_stylesheets=[dbc.themes.SPACELAB], title='عرض القاعات', )
-auth = dash_auth.BasicAuth(app, VALID_USERNAME_PASSWORD_PAIRS)
+# auth = dash_auth.BasicAuth(app, VALID_USERNAME_PASSWORD_PAIRS)
 server = app.server
 df = pd.read_excel('data.xlsx')
 header_div = html.H1(children=['عرض القاعات '])
