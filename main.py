@@ -13,7 +13,6 @@ target_filter = dcc.Dropdown(id=f'dropdown_filter', multi=False, options=df['ا�
                              value=df['اسم المادة'].unique().tolist()[0], style=dict(width='100%'))
 
 df = df[df['اسم المادة'] == df['اسم المادة'].unique().tolist()[0]]
-
 table_data = dash_table.DataTable(id='data_table',
                                   columns=[{"name": i, "id": i} for i in df.columns],
                                   data=df.to_dict('records'),
