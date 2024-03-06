@@ -9,7 +9,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.SPACELAB], title='عرض �
 server = app.server
 df = pd.read_excel('data.xlsx')
 header_div = html.H1(children=['عرض القاعات '])
-target_filter = dcc.Dropdown(id=f'dropdown_filter', multi=False, options=df['اسم المادة'].unique().tolist(),
+target_filter = dcc.Dropdown(id=f'dropdown_filter', multi=True, options=df['اسم المادة'].unique().tolist(),
                              value=df['اسم المادة'].unique().tolist()[0], style=dict(width='100%'))
 
 df = df[df['اسم المادة'] == df['اسم المادة'].unique().tolist()[0]]
