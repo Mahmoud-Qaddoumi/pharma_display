@@ -9,7 +9,7 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.SPACELAB], title='عرض �
 server = app.server
 df = pd.read_excel('data.xlsx')
 header_div = html.H1(children=['عرض القاعات '])
-target_filter = dcc.Dropdown(id=f'dropdown_filter', multi=False, options=df['اسم المادة'].unique().tolist(),
+target_filter = dcc.Dropdown(id=f'dropdown_filter', multi=True, options=df['اسم المادة'].unique().tolist(),
                              value=df['اسم المادة'].unique().tolist()[0], style=dict(width='100%'))
 
 df = df[df['اسم المادة'] == df['اسم المادة'].unique().tolist()[0]]
@@ -28,6 +28,7 @@ table_data = dash_table.DataTable(id='data_table',
                                   sort_mode="multi",
                                   # column_selectable="single",
                                   )
+
 table_div = html.Div(children=[table_data], style={'width': '70%'})
 
 filter_header = html.P(children='الرجاء اختيار إسم المادة')
@@ -42,8 +43,10 @@ input_decorator = [Input(component_id="dropdown_filter", component_property="val
 
 @app.callback(output_decorator, input_decorator)
 def general_info_callback(drop_down_filter):
+    if type(drop_down_filter) != list:
+        drop_down_filter = [drop_down_filter]
     df = pd.read_excel('data.xlsx')
-    df = df[df['اسم المادة'] == drop_down_filter]
+    df = df[df['اسم المادة'].isin(drop_down_filter)]
     return [df.to_dict('records')]
 
 
